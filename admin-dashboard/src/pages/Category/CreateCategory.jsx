@@ -23,9 +23,10 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useState } from 'react';
 import axios from 'axios';
 import { success } from 'src/theme/colors';
+import { useNavigate } from 'react-router-dom';
 
 function CreateCategory() {
-
+    const navigate = useNavigate();
     const [category, setCategory] = useState({
         categoryName: "",
         categoryDescription: ""
@@ -62,6 +63,8 @@ function CreateCategory() {
                     categoryName: "",
                     categoryDescription: ""
                 })
+                navigate("/display-category")
+
             }
             else {
                 // alert(res.data.message)
@@ -87,7 +90,7 @@ function CreateCategory() {
         <>
             <Helmet>
                 <title>
-                    Settings | Carpatin Free
+                    Create Category | eComm Admin
                 </title>
             </Helmet>
             <Box
