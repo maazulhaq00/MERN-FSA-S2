@@ -24,6 +24,8 @@ function DisplayCategory() {
 
     }
 
+    const d
+
 
     return (
         <>

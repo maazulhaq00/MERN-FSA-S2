@@ -8,6 +8,7 @@ import SettingsPage from './pages1/settings';
 import ThemePage from './pages1/theme';
 import CreateCategory from './pages/Category/CreateCategory';
 import DisplayCategory from './pages/Category/DisplayCategory';
+import EditCategory from './pages/Category/EditCategory';
 
 export const routes = [
   {
@@ -44,6 +45,10 @@ export const routes = [
       {
         path: 'display-category',
         element: <DisplayCategory />
+      },
+      {
+        path: 'edit-category/:id',
+        element: <EditCategory />
       }
     ]
   },

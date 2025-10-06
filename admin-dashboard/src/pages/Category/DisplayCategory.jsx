@@ -25,12 +25,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CheckIcon from '@mui/icons-material/Check';
 
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { success } from 'src/theme/colors';
+import { useNavigate } from 'react-router-dom';
 
 function DisplayCategory() {
+    const navigate = useNavigate();
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -50,6 +56,24 @@ function DisplayCategory() {
             alert("error")
         }
 
+    }
+
+    const editCategory = (id) => {
+        navigate(`/edit-category/${id}`)
+    }
+    const deleteCategory = async (id) => {
+        try {
+            let res = await axios.delete(`http://localhost:3001/categories/${id}`)
+
+            if(res.data.success) {
+                alert("category deleted successfully")
+                fetchCategory()
+            }
+        }
+        catch(err){
+            console.log(err);
+            alert("delete failed")
+        }
     }
 
     return (
@@ -82,36 +106,49 @@ function DisplayCategory() {
                                     xs={12}
                                     md={8}
                                 >
-                                        {/* {
+                                    {/* {
                                             alert.message && <Alert severity={alert.success ? "success" : "error"}>
                                                 {alert.message}
                                             </Alert>
                                         } */}
-                                        
 
-                                            <TableContainer component={Paper}>
-                                                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                                    <TableHead>
-                                                        <TableRow>
-                                                            <TableCell>Category Name</TableCell>
-                                                            <TableCell align="left">Category Description</TableCell>
-                                                        </TableRow>
-                                                    </TableHead>
-                                                    <TableBody>
-                                                        {categories.map((cat) => (
-                                                            <TableRow
-                                                                key={cat._id}
-                                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                            >
-                                                                <TableCell component="th" scope="row">
-                                                                    {cat.categoryName}
-                                                                </TableCell>
-                                                                <TableCell align="left">{cat.categoryDescription}</TableCell>
-                                                            </TableRow>
-                                                        ))}
-                                                    </TableBody>
-                                                </Table>
-                                            </TableContainer>
+
+                                    <TableContainer component={Paper}>
+                                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Category Name</TableCell>
+                                                    <TableCell align="left">Category Description</TableCell>
+                                                    <TableCell align="left">Actions</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {categories.map((cat) => (
+                                                    <TableRow
+                                                        key={cat._id}
+                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                    >
+                                                        <TableCell component="th" scope="row">
+                                                            {cat.categoryName}
+                                                        </TableCell>
+                                                        <TableCell align="left">{cat.categoryDescription}</TableCell>
+
+                                                        <TableCell align="left">
+                                                            <Stack direction="row" spacing={1}>
+                                                                <IconButton aria-label="delete" onClick={() => editCategory(cat._id)}>
+                                                                    <EditIcon />
+                                                                </IconButton>
+                                                                <IconButton aria-label="delete" onClick={() => deleteCategory(cat._id)}>
+                                                                    <DeleteIcon />
+                                                                </IconButton>
+                                                            </Stack>
+                                                        </TableCell>
+
+                                                    </TableRow>
+                                                ))}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
 
 
                                 </Grid>
