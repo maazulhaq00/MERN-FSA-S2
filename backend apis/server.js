@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 import connectToDB from './config/connectToDb.js';
 import categoryRouter from './routers/categoryRouter.js';
 import cors from 'cors'
+import productRouter from './routers/productRouter.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // Category Create APIs
 app.use("/categories", categoryRouter)
+app.use("/products", productRouter)
 
 // Runing server
 app.listen(process.env.PORT, () => {
