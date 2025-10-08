@@ -9,6 +9,7 @@ import ThemePage from './pages1/theme';
 import CreateCategory from './pages/Category/CreateCategory';
 import DisplayCategory from './pages/Category/DisplayCategory';
 import EditCategory from './pages/Category/EditCategory';
+import CreateProduct from './pages/Category/CreateProduct';
 
 export const routes = [
   {
@@ -49,7 +50,11 @@ export const routes = [
       {
         path: 'edit-category/:id',
         element: <EditCategory />
-      }
+      },
+      {
+        path: 'create-product',
+        element: <CreateProduct />
+      },
     ]
   },
   {
