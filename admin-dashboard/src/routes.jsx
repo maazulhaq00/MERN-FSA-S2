@@ -10,6 +10,7 @@ import CreateCategory from './pages/Category/CreateCategory';
 import DisplayCategory from './pages/Category/DisplayCategory';
 import EditCategory from './pages/Category/EditCategory';
 import CreateProduct from './pages/Category/CreateProduct';
+import DisplayProduct from './pages/Category/DisplayProduct';
 
 export const routes = [
   {
@@ -54,6 +55,10 @@ export const routes = [
       {
         path: 'create-product',
         element: <CreateProduct />
+      },
+      {
+        path: 'display-product',
+        element: <DisplayProduct />
       },
     ]
   },

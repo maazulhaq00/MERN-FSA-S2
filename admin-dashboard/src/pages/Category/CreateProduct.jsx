@@ -70,41 +70,33 @@ function CreateProduct() {
     }
 
 
-    const handleAddCategory = async () => {
+    const handleAddProduct = async () => {
         // console.log("clickedddd");
         try {
-            let res = await axios.post("http://localhost:3001/categories", category)
+            let res = await axios.post("http://localhost:3001/products", product)
             console.log(res)
 
             if (res.data.success) {
-                // alert("Category Added Successfully")
-                setAlert({
-                    success: true,
-                    message: "Category Added Successfully"
-                })
-                setCategory({
-                    categoryName: "",
-                    categoryDescription: ""
-                })
-                navigate("/display-category")
+                alert("Product Added Successfully")
+                navigate("/display-product")
 
             }
             else {
-                // alert(res.data.message)
-                setAlert({
-                    success: false,
-                    message: res.data.message
-                })
+                alert(res.data.message)
+                // setAlert({
+                //     success: false,
+                //     message: res.data.message
+                // })
             }
         }
         catch (error) {
             console.log(error)
             if (error.response) {
-                // alert(error.response.data.message)
-                setAlert({
-                    success: false,
-                    message: error.response.data.message
-                })
+                alert(error.response.data.message)
+                // setAlert({
+                //     success: false,
+                //     message: error.response.data.message
+                // })
             }
         }
     }
@@ -207,7 +199,7 @@ function CreateProduct() {
                                                     size="large"
                                                     type="submit"
                                                     variant="contained"
-                                                    onClick={handleAddCategory}
+                                                    onClick={handleAddProduct}
                                                 >
                                                     Create                                                </Button>
                                             </Box>
