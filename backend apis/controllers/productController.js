@@ -3,11 +3,13 @@ import Product from "../models/productModel.js"
 
 const createProduct = async (req, res) => {
     try {
-        if (!('name' in req.body) || !('description' in req.body) || !('price' in req.body) || !('image' in req.body) || !('categoryId' in req.body)) {
+        if (!('name' in req.body) || !('description' in req.body) || !('price' in req.body) || !('categoryId' in req.body)) {
             return res.status(400).json({ success: false, message: "Required field missing" })
         }
         // Get the data sent from req
-        const { name, description, price, image, categoryId } = req.body
+        const { name, description, price, categoryId } = req.body
+
+        let image = req.file.filename
 
 
         // Create a category
@@ -58,11 +60,13 @@ const updateProduct = async (req, res) => {
     try {
         const productId = req.params.id
 
-        if (!('name' in req.body) || !('description' in req.body) || !('price' in req.body) || !('image' in req.body) || !('categoryId' in req.body)) {
+        if (!('name' in req.body) || !('description' in req.body) || !('price' in req.body) || !('categoryId' in req.body)) {
             return res.status(400).json({ success: false, message: "Required field missing" })
         }
         // Get the data sent from req
-        const { name, description, price, image, categoryId } = req.body
+        const { name, description, price, categoryId } = req.body
+        
+        let image = req.file.filename
 
         await Product.findByIdAndUpdate(productId, {name, description, price, image, categoryId})
 

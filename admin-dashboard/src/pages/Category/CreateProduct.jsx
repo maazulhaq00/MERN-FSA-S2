@@ -68,12 +68,30 @@ function CreateProduct() {
             }
         })
     }
+    const handleImageInputChange = (e) => {
+        setProduct((pre) => {
+            return {
+                ...pre,
+                [e.target.name]: e.target.files[0]
+            }
+        })
+    }
 
 
     const handleAddProduct = async () => {
         // console.log("clickedddd");
         try {
-            let res = await axios.post("http://localhost:3001/products", product)
+
+            let formData = new FormData();
+
+            formData.append("name", product.name)
+            formData.append("description", product.description)
+            formData.append("price", product.price)
+            formData.append("image", product.image)
+            formData.append("categoryId", product.categoryId)
+
+            let res = await axios.post(
+                "http://localhost:3001/products", formData)
             console.log(res)
 
             if (res.data.success) {
@@ -163,11 +181,11 @@ function CreateProduct() {
 
                                                 />
                                                 <TextField
+                                                    type='file'
                                                     fullWidth
                                                     label="Product Image"
                                                     name="image"
-                                                    value={product.image}
-                                                    onChange={handleInputChange}
+                                                    onChange={handleImageInputChange}
 
                                                 />
                                                 <FormControl fullWidth>

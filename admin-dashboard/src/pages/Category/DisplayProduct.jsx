@@ -39,6 +39,8 @@ function DisplayProduct() {
     const navigate = useNavigate();
     const [products, setProducts] = useState([])
 
+    let imgUrl = "http://localhost:3001/uploads/"
+
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -135,7 +137,13 @@ function DisplayProduct() {
                                                         </TableCell>
                                                         <TableCell align="left">{product.description}</TableCell>
                                                         <TableCell align="left">{product.price}</TableCell>
-                                                        <TableCell align="left">{product.image}</TableCell>
+                                                        <TableCell align="left">
+                                                        
+                                                            {/* {product.image} */}
+                                                            <img width="100" height="100"
+                                                            src={imgUrl + product.image} alt="" />
+                                                        
+                                                        </TableCell>
                                                         <TableCell align="left">{product.categoryId.categoryName}</TableCell>
 
                                                       
