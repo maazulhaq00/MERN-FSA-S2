@@ -1,0 +1,79 @@
+.tracker-wrapper {
+  padding: 40px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.tracker-card {
+  background: white;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.tracker-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.alert {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.alert.success {
+  background-color: #d1f7d1;
+  color: #226622;
+}
+
+.alert.error {
+  background-color: #f7d1d1;
+  color: #a12222;
+}
+
+.submit-btn {
+  background-color: #007aff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #005edb;
+}
